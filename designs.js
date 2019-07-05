@@ -9,6 +9,9 @@ const formElement = document.getElementById('sizePicker');
 formElement.addEventListener("submit", onSubmitQuery);
 
 function makeGrid() {
+
+    removeExistingRows();
+
     // Add the new rows and columns
     const rows = heightInput.valueAsNumber;
     const columns = widthInput.valueAsNumber;
@@ -30,4 +33,16 @@ function onSubmitQuery(event) {
     event.preventDefault();
     // Make the grid
     makeGrid();    
+}
+
+function removeExistingRows() {
+    
+    while(tableElement.firstChild != null)
+    {
+        var tableRow = tableElement.removeChild(tableElement.firstChild);      
+        while(tableRow.firstChild)
+        {
+            var tableCell = tableRow.removeChild(tableRow.firstChild);           
+        }  
+    }
 }
