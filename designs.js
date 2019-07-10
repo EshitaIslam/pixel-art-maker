@@ -10,6 +10,9 @@ tableElement.addEventListener("click", changeCellColor);
 const formElement = document.getElementById('sizePicker');
 formElement.addEventListener("submit", onSubmitQuery);
 
+// Set the grid when DOM is ready
+document.addEventListener('DOMContentLoaded', makeGrid);
+
 function makeGrid() {
     // Remove previous rows and columns
     removeExistingRows();
