@@ -1,15 +1,17 @@
 // Select color input
+const colorInput = document.getElementById('colorPicker');
 // Select size input
 const heightInput = document.getElementById('inputHeight');
 const widthInput = document.getElementById('inputWidth');
 
-// When size is submitted by the user, call makeGrid()
 const tableElement = document.getElementById('pixelCanvas');
+tableElement.addEventListener("click", changeCellColor);
+// When size is submitted by the user, call makeGrid()
 const formElement = document.getElementById('sizePicker');
 formElement.addEventListener("submit", onSubmitQuery);
 
 function makeGrid() {
-
+    // Remove previous rows and columns
     removeExistingRows();
 
     // Add the new rows and columns
@@ -44,5 +46,22 @@ function removeExistingRows() {
         {
             var tableCell = tableRow.removeChild(tableRow.firstChild);           
         }  
+    }
+}
+
+function changeCellColor(event)
+{
+    if(event.target.nodeName === "TD")
+    {
+        var color = colorInput.value;
+
+        if(event.target.style.backgroundColor === "")
+        {
+            event.target.style.backgroundColor = color;
+        }
+        else
+        {
+            event.target.style.backgroundColor = "";
+        }
     }
 }
